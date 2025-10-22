@@ -1,5 +1,5 @@
-<div style="background: white; padding: 16pt 8pt 4pt 8pt">
-    <img src=".img/accesspilot-logo.svg" style="max-width: 100%; background: white; height: auto;" alt="Logotipo Access Pilot"/>
+<div style="background: white !important; padding: 16pt 8pt 4pt 8pt">
+    <img src=".img/accesspilot-logo.svg" style="max-width: 100%; background: white !important; height: auto;" alt="Logotipo Access Pilot"/>
     <div style="text-align: end; color: black;">
         <span>Um produto <a href="https://github.com/getInsight-it" target="_blank" rel="noreferrer" style="color: black; text-decoration: underline">getInsight</a></span>
     </div>
