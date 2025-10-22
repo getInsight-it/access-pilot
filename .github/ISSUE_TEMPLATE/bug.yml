@@ -1,0 +1,78 @@
+name: Comunicação de Bug
+description: Comunique um bug, não relacionado à segurança
+labels: ["kind/bug", "status/triage"]
+type: bug
+body:
+  - type: checkboxes
+    attributes:
+      label: Antes de comunicar um bug
+      description: |
+        Por favor, verifique se o problema já foi relatado e tente reproduzi-lo na versão mais recente.
+
+        Qualquer problema reportado precisa necessariamente ser reproduzido na [última versão](https://github.com/getInsight-it/access-pilot/releases/latest).
+
+        **⚠️ O descumprimento dessas diretrizes pode resultar no fechamento da sua issue sem que nenhuma ação seja tomada. ⚠️**
+      options:
+        - label: Li e entendi os termos acima para o envio de issues e compreendo que minha issue pode ser encerrada sem ação caso eu não os siga.
+          required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Área
+      description: Área afetada
+      options:
+        -
+        - backend
+        - frontend
+        - integração
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição do problema
+      description: Forneça uma descrição clara e concisa do problema.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Versão
+      description: Qual é a versão afetada?
+    validations:
+      required: true
+  - type: checkboxes
+    id: regression
+    attributes:
+      label: Regressão
+      description: O problema surgiu apenas após a atualização do Access Pilot e funcionava conforme o esperado anteriormente?
+      options:
+        - label: O problema é uma regressão
+  - type: textarea
+    id: behaviorExpected
+    attributes:
+      label: Comportamento esperado
+      description: Descreva o comportamento esperado de forma clara e concisa.
+    validations:
+      required: true
+  - type: textarea
+    id: behaviorActual
+    attributes:
+      label: Comportamento observado
+      description: Descreva o comportamento atual de forma clara e concisa.
+    validations:
+      required: true
+  - type: textarea
+    id: reproducer
+    attributes:
+      label: Como reproduzir?
+      description: Forneça etapas claras e concisas para reproduzir o problema.
+    validations:
+      required: true
+  - type: textarea
+    id: other
+    attributes:
+      label: Algo mais?
+      description: Links? Referências? Qualquer coisa que possa nos dar mais contexto sobre o problema que você está enfrentando!
+    validations:
+      required: false

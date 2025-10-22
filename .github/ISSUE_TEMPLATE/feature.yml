@@ -1,0 +1,50 @@
+name: Pedido de nova funcionalidade
+description: Quero pedir uma nova funcionalidade no Access Pilot
+labels: ["kind/feature", "status/triage"]
+type: feature
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição
+      description: Descreva a nova funcionalidade em um nível geral.
+    validations:
+      required: true
+  - type: textarea
+    id: value_proposition
+    attributes:
+      label: Proposição de valor
+      description: Descreva qual valor o novo recurso irá oferecer.
+    validations:
+      required: true
+  - type: textarea
+    id: goals
+    attributes:
+      label: Escopo
+      description: Descreva o escopo da funcionalidade
+    validations:
+      required: true
+  - type: textarea
+    id: non_goals
+    attributes:
+      label: Não-Escopo
+      description: Descreva o que deve ficar de fora do escopo proposto
+    validations:
+      required: true
+  - type: input
+    id: discussion
+    attributes:
+      label: Discussão
+      description: |
+        Se já houve uma discussão sobre o recurso, forneça um link para essa discussão.
+  
+        Observe que todas as solicitações — exceto as pequenas — devem ser discutidas por meio do [GitHub Discussion](https://github.com/getInsight-it/access-pilot/discussions/categories/ideas).
+    validations:
+      required: false
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notas
+      description: Ideias de design? Ideias de implementação? Qualquer coisa que possa nos dar mais contexto sobre o recurso que você está propondo!
+    validations:
+      required: false
