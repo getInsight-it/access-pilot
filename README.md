@@ -1,15 +1,18 @@
-<p align="center" >
-    <div align="center" style="background-color: white !important; padding: 16pt 8pt 4pt 8pt">
+<p align="center">
+    <p align="center" style="width: 100%; padding: 16pt 8pt 4pt 8pt;">
+        
         <picture>
           <source media="(prefers-color-scheme: dark)" srcset=".img/accesspilot-logo-w.svg">
           <source media="(prefers-color-scheme: light)" srcset="img/accesspilot-logo.svg">
           <img alt="Shows a black logo in light color mode and a white one in dark color mode." src="img/accesspilot-logo.svg" style="max-width: 90%; height: auto;" >
         </picture>
 
-        <div style="text-align: end !important; color: black;">
+        <div style="text-align: end !important;">
             <span>Um produto <a href="https://github.com/getInsight-it" target="_blank" rel="noreferrer" style="color: black; text-decoration: underline">getInsight</a></span>
         </div>
-    </div>
+
+    </p>
+
     <p align="center">
         <img src="https://img.shields.io/badge/Java-21-EA9438?style=for-the-badge&logo=openjdk" />
         <img src="https://img.shields.io/badge/ReactJS-18-86D8F7?style=for-the-badge&logo=react" />
