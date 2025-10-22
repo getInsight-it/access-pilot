@@ -16,6 +16,8 @@
     <img alt="ReactJS-Badge" src="https://img.shields.io/badge/ReactJS-18-86D8F7?style=for-the-badge&logo=react" />
     <img alt="Maven-Badge" src="https://img.shields.io/badge/Maven-3-red?style=for-the-badge&logo=apachemaven" />
     <img alt="Vite-Badge" src="https://img.shields.io/badge/Vite-5-656CF6?style=for-the-badge&logo=vite" />
+    <img alt="NodeJs-Badge" src="https://img.shields.io/badge/NodeJS-22-5FA04E?style=for-the-badge&logo=nodedotjs" />
+    <br />
     <img alt="Keycloak-Badge" src="https://img.shields.io/badge/Keycloak-v26-blue?style=for-the-badge&logo=keycloak" />
     <img alt="AMQP-Badge" src="https://img.shields.io/badge/AMQP-0--9--1-EE7434?style=for-the-badge&logo=rabbitmq" />
     <img alt="PostgreSQL-Badge" src="https://img.shields.io/badge/PostgreSQL-16%2B-blue?style=for-the-badge&logo=PostgreSQL&logoColor=white" />
