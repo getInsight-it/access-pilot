@@ -1,5 +1,5 @@
 <p align="center">
-    <p align="center" style="width: 100%; padding: 16pt 8pt 4pt 8pt;">
+    <div align="center" style="width: 100%; padding: 16pt 8pt 4pt 8pt;">
         
         <picture>
           <source media="(prefers-color-scheme: dark)" srcset=".img/accesspilot-logo-w.svg">
@@ -10,8 +10,7 @@
         <div style="text-align: end !important;">
             <span>Um produto <a href="https://github.com/getInsight-it" target="_blank" rel="noreferrer" style="color: black; text-decoration: underline">getInsight</a></span>
         </div>
-
-    </p>
+    </div>
 
     <p align="center">
         <img src="https://img.shields.io/badge/Java-21-EA9438?style=for-the-badge&logo=openjdk" />
@@ -24,7 +23,7 @@
         <img src="https://img.shields.io/badge/MinIO-RELEASE-B73B4B?style=for-the-badge&logo=minio&logoColor=B73B4B" />
         <img src="https://img.shields.io/badge/Redis-7+-EB5444?style=for-the-badge&logo=redis" />
     </p>
-</p>
+</div>
 
 ---
 
