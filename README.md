@@ -1,10 +1,9 @@
 <p align="center">
     <div align="center" style="width: 100%; padding: 16pt 8pt 4pt 8pt;">
-        
         <picture>
-          <source media="(prefers-color-scheme: dark)" srcset=".img/accesspilot-logo-w.svg">
-          <source media="(prefers-color-scheme: light)" srcset="img/accesspilot-logo.svg">
-          <img alt="Shows a black logo in light color mode and a white one in dark color mode." src="img/accesspilot-logo.svg" style="max-width: 90%; height: auto;" >
+          <source media="(prefers-color-scheme: dark)" srcset=".img/accesspilot-logo-w.svg" />
+          <source media="(prefers-color-scheme: light)" srcset="img/accesspilot-logo.svg" />
+          <img alt="Shows a black logo in light color mode and a white one in dark color mode." src="img/accesspilot-logo.svg" style="max-width: 90%; height: auto;" />
         </picture>
 
         <div style="text-align: end !important;">
@@ -13,17 +12,17 @@
     </div>
 
     <p align="center">
-        <img src="https://img.shields.io/badge/Java-21-EA9438?style=for-the-badge&logo=openjdk" />
-        <img src="https://img.shields.io/badge/ReactJS-18-86D8F7?style=for-the-badge&logo=react" />
-        <img src="https://img.shields.io/badge/Maven-3-red?style=for-the-badge&logo=apachemaven" />
-        <img src="https://img.shields.io/badge/Vite-5-656CF6?style=for-the-badge&logo=vite" />
-        <img src="https://img.shields.io/badge/Keycloak-v26-blue?style=for-the-badge&logo=keycloak" />
-        <img src="https://img.shields.io/badge/AMQP-0--9--1-EE7434?style=for-the-badge&logo=rabbitmq" />
-        <img src="https://img.shields.io/badge/PostgreSQL-16%2B-blue?style=for-the-badge&logo=PostgreSQL&logoColor=white" />
-        <img src="https://img.shields.io/badge/MinIO-RELEASE-B73B4B?style=for-the-badge&logo=minio&logoColor=B73B4B" />
-        <img src="https://img.shields.io/badge/Redis-7+-EB5444?style=for-the-badge&logo=redis" />
+        <img alt="Java-Badge" src="https://img.shields.io/badge/Java-21-EA9438?style=for-the-badge&logo=openjdk" />
+        <img alt="ReactJS-Badge" src="https://img.shields.io/badge/ReactJS-18-86D8F7?style=for-the-badge&logo=react" />
+        <img alt="Maven-Badge" src="https://img.shields.io/badge/Maven-3-red?style=for-the-badge&logo=apachemaven" />
+        <img alt="Vite-Badge" src="https://img.shields.io/badge/Vite-5-656CF6?style=for-the-badge&logo=vite" />
+        <img alt="Keycloak-Badge" src="https://img.shields.io/badge/Keycloak-v26-blue?style=for-the-badge&logo=keycloak" />
+        <img alt="AMQP-Badge" src="https://img.shields.io/badge/AMQP-0--9--1-EE7434?style=for-the-badge&logo=rabbitmq" />
+        <img alt="PostgreSQL-Badge" src="https://img.shields.io/badge/PostgreSQL-16%2B-blue?style=for-the-badge&logo=PostgreSQL&logoColor=white" />
+        <img alt="MinIO-Badge" src="https://img.shields.io/badge/MinIO-RELEASE-B73B4B?style=for-the-badge&logo=minio&logoColor=B73B4B" />
+        <img alt="Redis-Badge" src="https://img.shields.io/badge/Redis-7+-EB5444?style=for-the-badge&logo=redis" />
     </p>
-</div>
+</p>
 
 ---
 
