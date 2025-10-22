@@ -7,8 +7,8 @@
     
 </p>
 
-<p style="text-align: end !important;">
-    <span>Um produto <a href="https://github.com/getInsight-it" target="_blank" rel="noreferrer" style="text-decoration: underline">getInsight</a></span>
+<p align="right">
+    <span>© Um produto <a href="https://github.com/getInsight-it" target="_blank" rel="noreferrer" style="text-decoration: underline">getInsight</a></span>
 </p>
 
 <p align="center">
