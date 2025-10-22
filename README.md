@@ -6,9 +6,9 @@
           <img alt="Shows a black logo in light color mode and a white one in dark color mode." src="img/accesspilot-logo.svg" style="max-width: 90%; height: auto;" />
         </picture>
 
-        <div style="text-align: end !important;">
+        <p style="text-align: end !important;">
             <span>Um produto <a href="https://github.com/getInsight-it" target="_blank" rel="noreferrer" style="color: black; text-decoration: underline">getInsight</a></span>
-        </div>
+        </p>
     </div>
 
     <p align="center">
