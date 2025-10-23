@@ -1,8 +1,8 @@
 <p align="center" style="width: 100%; padding: 16pt 8pt 4pt 8pt;">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset=".img/accesspilot-logo-w.svg" />
-      <source media="(prefers-color-scheme: light)" srcset="img/accesspilot-logo.svg" />
-      <img alt="Shows a black logo in light color mode and a white one in dark color mode." src="img/accesspilot-logo.svg" style="max-width: 90%; height: auto;" />
+      <source media="(prefers-color-scheme: light)" srcset=".img/accesspilot-logo.svg" />
+      <img alt="Shows a black logo in light color mode and a white one in dark color mode." src=".img/accesspilot-logo.svg" style="max-width: 90%; height: auto;" />
     </picture>
     
 </p>
