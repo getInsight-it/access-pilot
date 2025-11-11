@@ -61,8 +61,8 @@ Nada melhor que uma imagem...
 
 Esses são os componentes que você, em breve, poderá acessar:
 
-- Backend
-- Frontend
+- [Backend](https://github.com/getInsight-it/access-pilot-backend)
+- [Frontend](https://github.com/getInsight-it/access-pilot-frontend)
 - MCP Server
 - LLM Service
 
