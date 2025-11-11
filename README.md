@@ -66,6 +66,21 @@ Esses são os componentes que você, em breve, poderá acessar:
 - MCP Server
 - LLM Service
 
+## Como usar?
+
+A forma mais fácil de experimentar o Access Pilot é por meio do nosso [docker-compose.yaml](exemplo/docker-compose.yaml) de exemplo. Faça o `git clone` deste repositório e na pasta `exemplo` execute:
+
+```shell
+docker compose up -d
+```
+
+Quando todos os contêineres estiverem em execução, você terá acesso, no seu navegador:
+
+| Serviço               | Porta                                               
+|-----------------------|-----------------------------------------------------|
+| Access Pilot Frontend | [5173](http://localhost:5173)                       |
+| Access Pilot Backend  | [8080](http://localhost:8080/swagger-ui/index.html) |
+
 
 ## Como contribuir?
 

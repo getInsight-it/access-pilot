@@ -1,0 +1,181 @@
+name: AccessPilot
+
+volumes:
+  postgres:
+  redis:
+  minio:
+  mailhog:
+
+services:
+
+  postgres:
+    container_name: accessPilot_PostgreSQL
+    image: postgres:18-trixie
+    hostname: postgres
+    restart: unless-stopped
+    healthcheck:
+      test: pg_isready -U postgres -d postgres
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    volumes:
+      - type: volume
+        source: postgres
+        target: /var/lib/postgresql/18/docker
+      - type: bind
+        source: ./initdb
+        target: /docker-entrypoint-initdb.d
+        read_only: true
+        consistency: consistent
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+
+  redis:
+    container_name: accessPilot_Redis
+    image: redis:8
+    hostname: redis
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: redis
+        target: /data
+    ports:
+      - "6379:6379"
+
+  minio:
+    container_name: accessPilot_MinIO
+    image: quay.io/minio/minio:latest
+    hostname: minio
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: minio
+        target: /data
+    environment:
+      - MINIO_ACCESS_KEY=admin
+      - MINIO_SECRET_KEY=abc12345
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    command: server /data --console-address ":9001"
+
+  mailhog:
+    container_name: accessPilot_Mailhog
+    image: minidocks/mailhog:latest
+    hostname: mailhog
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: mailhog
+        target: /maildir
+    environment:
+      - MH_HOSTNAME=mailhog
+      - MH_STORAGE=maildir
+      - MH_MAILDIR_PATH=/maildir
+    ports:
+      - "1025:25"
+      - "7025:80"
+
+  keycloak:
+    container_name: accessPilot_Keycloak
+    image: quay.io/keycloak/keycloak:26.4
+    hostname: keycloak
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mailhog:
+        condition: service_started
+    volumes:
+      - type: bind
+        source: ./accesspilot.json
+        target: /opt/keycloak/data/import/realm-export.json
+        read_only: true
+        consistency: consistent
+    healthcheck:
+      test: /opt/keycloak/bin/kcadm.sh config credentials --server http://localhost:8080/ --realm master --user admin --password 123456 && /opt/keycloak/bin/kcadm.sh update realms/master -s sslRequired=NONE
+      interval: 10s
+      timeout: 3s
+      retries: 6
+      start_period: 5s
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: 123456
+      KC_HTTP_HOST: 0.0.0.0
+      KC_HEALTH_ENABLED: true
+      KC_METRICS_ENABLED: false
+      KC_DB: postgres
+      KC_DB_URL_HOST: postgres
+      KC_DB_URL_PORT: 5432
+      KC_DB_URL_DATABASE: keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: keycloak
+      KC_DB_POOL_MIN_SIZE: 0
+      KC_DB_POOL_MAX_SIZE: 10
+      KC_DB_POOL_INITIAL_SIZE: 1
+      KC_LOG_CONSOLE_COLOR: true
+      KC_LOG_LEVEL: INFO
+      KC_CACHE: local
+    command:
+      - "start-dev"
+      - "--import-realm"
+    ports:
+      - "7080:8080"
+
+  access-pilot-backend:
+    container_name: accessPilot_Backend
+    image: ghcr.io/getinsight-it/access-pilot-backend:latest
+    hostname: backend
+    restart: unless-stopped
+    healthcheck:
+      test: curl -fs http://localhost:8080/actuator/health
+    depends_on:
+      postgres:
+        condition: service_healthy
+      keycloak:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      mailhog:
+        condition: service_started
+      minio:
+        condition: service_started
+    environment:
+      PROVIDER_KEYCLOAK_URL: http://keycloak:8080
+      PROVIDER_KEYCLOAK_REALM: access-pilot
+      PROVIDER_KEYCLOAK_CLIENT-ID: accesspilot-backend
+      PROVIDER_KEYCLOAK_CLIENT-SECRET: b0h3gPFmK79ZwcZcvZkKQPHfjNerywqV
+      JWT_AUTH_CONVERTER_RESOURCE-ID: accesspilot-backend
+      SPRING_DOCKER_COMPOSE_ENABLED: false
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/db_accesspilot_dev
+      SPRING_DATASOURCE_USERNAME: db_accesspilot_user
+      SPRING_DATASOURCE_PASSWORD: db_accesspilot_user_pw
+      MAIL_HOST: mailhog
+      MAIL_PORT: 25
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH: false
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+      MINIO_ENDPOINT: http://minio:9000
+      MINIO_ACCESSKEY: admin
+      MINIO_SECRETKEY: abc12345
+      SENTRY_ENABLED: false
+    ports:
+      - "8080:8080"
+
+  access-pilot-frontend:
+    container_name: accessPilot_Frontend
+    image: ghcr.io/getinsight-it/access-pilot-frontend:latest
+    depends_on:
+      access-pilot-backend:
+        condition: service_healthy
+    volumes:
+      - type: bind
+        source: ./env.js
+        target: /usr/share/nginx/html/assets/env/env.js
+        read_only: true
+        consistency: consistent
+    ports:
+      - "5173:80"
