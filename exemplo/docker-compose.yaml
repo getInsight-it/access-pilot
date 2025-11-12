@@ -127,7 +127,7 @@ services:
 
   access-pilot-backend:
     container_name: accessPilot_Backend
-    image: ghcr.io/getinsight-it/access-pilot-backend:latest
+    image: ghcr.io/getinsight-it/access-pilot-backend:develop
     hostname: backend
     restart: unless-stopped
     healthcheck:
@@ -167,7 +167,7 @@ services:
 
   access-pilot-frontend:
     container_name: accessPilot_Frontend
-    image: ghcr.io/getinsight-it/access-pilot-frontend:latest
+    image: ghcr.io/getinsight-it/access-pilot-frontend:develop
     depends_on:
       access-pilot-backend:
         condition: service_healthy
