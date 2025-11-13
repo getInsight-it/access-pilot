@@ -10,7 +10,7 @@ services:
 
   postgres:
     container_name: accessPilot_PostgreSQL
-    image: postgres:18-trixie
+    image: postgres:18-alpine
     hostname: postgres
     restart: unless-stopped
     healthcheck:
@@ -55,8 +55,8 @@ services:
         source: minio
         target: /data
     environment:
-      - MINIO_ACCESS_KEY=admin
-      - MINIO_SECRET_KEY=abc12345
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=abc12345
     ports:
       - "9000:9000"
       - "9001:9001"
@@ -102,8 +102,8 @@ services:
       retries: 6
       start_period: 5s
     environment:
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: 123456
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: 123456
       KC_HTTP_HOST: 0.0.0.0
       KC_HEALTH_ENABLED: true
       KC_METRICS_ENABLED: false
@@ -128,8 +128,11 @@ services:
   access-pilot-backend:
     container_name: accessPilot_Backend
     image: ghcr.io/getinsight-it/access-pilot-backend:develop
+    pull_policy: always
     hostname: backend
     restart: unless-stopped
+    command:
+      - "./bootstrap/start.sh"
     healthcheck:
       test: curl -fs http://localhost:8080/actuator/health
     depends_on:
@@ -162,12 +165,24 @@ services:
       MINIO_ACCESSKEY: admin
       MINIO_SECRETKEY: abc12345
       SENTRY_ENABLED: false
+      CORS_ALLOWED_ORIGIN_PATTERN: '*'
+      JWT_AUTH_CONVERTER_ALLOWED_ISSUERS: http://localhost:7080/realms/access-pilot
+      SPRINGDOC_SWAGGER_UI_OAUTH_AUTHORIZATION_URL: http://localhost:7080/realms/access-pilot/protocol/openid-connect/auth
+      SPRINGDOC_SWAGGER_UI_OAUTH_TOKEN_URL: http://localhost:7080/realms/access-pilot/protocol/openid-connect/token
     ports:
       - "8080:8080"
+    volumes:
+      - type: bind
+        source: ./bootstrap/forwarding.conf
+        target: /etc/rinetd.conf
+      - type: bind
+        source: ./bootstrap/start.sh
+        target: /usr/local/app/bootstrap/start.sh
 
   access-pilot-frontend:
     container_name: accessPilot_Frontend
     image: ghcr.io/getinsight-it/access-pilot-frontend:develop
+    pull_policy: always
     depends_on:
       access-pilot-backend:
         condition: service_healthy

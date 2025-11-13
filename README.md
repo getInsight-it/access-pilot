@@ -81,6 +81,24 @@ Quando todos os contêineres estiverem em execução, você terá acesso, no seu
 | Access Pilot Frontend | [5173](http://localhost:5173)                       |
 | Access Pilot Backend  | [8080](http://localhost:8080/swagger-ui/index.html) |
 
+Para usar o sistema, acesse o [Access Pilot Frontend](http://localhost:5173) e faça seu login com a nossa credencial de teste:
+
+| Login   | Senha   |
+|---------|---------|
+| `fulano` | `123456` |
+
+
+Esse usuário é `ADMIN` e tem todas as permissões necessárias para operar o sistema.
+
+Além disso, as seguintes ferramentas acessórias também estarão disponíveis, conforme consta na __Arquitetura__:
+
+| Ferrameta  | Porta                         | Descrição                                                                                               | Login     | Senha      |
+|------------|-------------------------------|---------------------------------------------------------------------------------------------------------|-----------|------------|
+| Keycloak   | [7080](http://localhost:7080) | IdP da solução                                                                                          | `admin`   | `123456`   |
+| MailHog    | [7025](http://localhost:7025) | Caixa de entrada (teste) de e-mails. Útil para não enviarmos e-mails de verdade neste ambiente de teste | N/A       | N/A        |
+| Redis      | 6379                          | Solução de cache de segundo nível                                                                       | N/A       | N/A        |    
+| MinIO      | [9001](http://localhost:9001) | Bucket para armazenamento de arquivos                                                                   | `admin`   | `abc12345` |
+| PostgreSQL | 5432                          | Banco de dados                                                                                          | `postgres` | `postgres`  |
 
 ## Como contribuir?
 
