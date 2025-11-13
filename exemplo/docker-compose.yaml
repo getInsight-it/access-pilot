@@ -164,7 +164,8 @@ services:
       MINIO_ENDPOINT: http://minio:9000
       MINIO_ACCESSKEY: admin
       MINIO_SECRETKEY: abc12345
-      SENTRY_ENABLED: false
+      SENTRY_ENABLED: true
+      SENTRY_ENVIRONMENT: gh_exemplo
       CORS_ALLOWED_ORIGIN_PATTERN: '*'
       JWT_AUTH_CONVERTER_ALLOWED_ISSUERS: http://localhost:7080/realms/access-pilot
       SPRINGDOC_SWAGGER_UI_OAUTH_AUTHORIZATION_URL: http://localhost:7080/realms/access-pilot/protocol/openid-connect/auth
