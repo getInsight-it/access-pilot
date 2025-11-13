@@ -100,6 +100,10 @@ Além disso, as seguintes ferramentas acessórias também estarão disponíveis,
 | MinIO      | [9001](http://localhost:9001) | Bucket para armazenamento de arquivos                                                                   | `admin`   | `abc12345` |
 | PostgreSQL | 5432                          | Banco de dados                                                                                          | `postgres` | `postgres`  |
 
+## Aviso de Privacidade
+
+O Access Pilot faz coleta de logs de erros e telemetria, com o objetivo de permitir analisar falhas e garantir a melhoria contínua do produto. Não deixe de conferir o nosso [Aviso de Privacidade](PRIVACY.md).
+
 ## Como contribuir?
 
 Para contibuir com o projeto, começe lendo as orientações do [CONTRIBUTING.md](CONTRIBUTING.md). Além disso, esperamos que todos os participantes da comunidade cumpram nosso [Código de Conduta](CODE_OF_CONDUCT.md). Por favor, leia-o e siga-o.
